@@ -12,13 +12,14 @@ def home():
 
 
 @app.route("/register", methods=["GET", "POST"])
-def register():
+def registerClient():
     if request.method == "GET":
         return render_template("register.html")
     elif request.method == "POST":
-        logic = UserLogic()
-        userName = request.form["username"]
-        userEmail = request.form["useremail"]
+        logic = ClientLogic()
+        clientName = request.form["name"]
+        clientEmail = request.form["email"]
+        clientCel = request.form["cel"]
         passwd = request.form["passwd"]
         confpasswd = request.form["confpasswd"]
         if passwd == confpasswd:
@@ -27,7 +28,7 @@ def register():
             encPasswd = passwd.encode("utf-8")
             hashPasswd = bcrypt.hashpw(encPasswd, salt)
             strPasswd = hashPasswd.decode("utf-8")
-            rows = logic.insertUser(userName, userEmail, strPasswd, strSalt)
+            rows = logic.insertClient(clientName, clientCel, clientEmail, strPasswd, strSalt)
             return redirect("login")
         else:
             return redirect("register")
@@ -39,7 +40,7 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     elif request.method == "POST":
-        logic = UserLogic()
+        logic = ClientLogic()
         userEmail = request.form["useremail"]
         passwd = request.form["passwd"]
         userDict = logic.getUserByEmail(userEmail)

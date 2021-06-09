@@ -5,21 +5,21 @@ class ClientLogic(PybaLogic):
     def __init__(self):
         super().__init__()
 
-    def insertClient(self, userName, userCel, userEmail, password, salt):
+    def insertClient(self, name, cel, email, password, salt):
         database = self.createDatabaseObj()
         sql = (
             "INSERT INTO `panpanbd`.`clients` "
             + "(`id_client`,`email`,`cel`,`name`,`password`,`salt`)"
-            + f"VALUES(0,'{userEmail}','{userCel}','{userName}','{password}','{salt}');"
+            + f"VALUES(0,'{email}','{cel}','{name}','{password}','{salt}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
 
-    def getClientByEmail(self, userEmail):
+    def getClientByEmail(self, email):
         database = self.createDatabaseObj()
         sql = (
             "SELECT email, password, salt "
-            + f"FROM panpanbd.clients where email like '{userEmail}';"
+            + f"FROM panpanbd.clients where email like '{email}';"
         )
         result = database.executeQuery(sql)
         if len(result) > 0:
