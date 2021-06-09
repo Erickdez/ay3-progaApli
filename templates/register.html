@@ -12,19 +12,23 @@
     <h1>register</h1>
 
     <form action="{{ url_for('register') }}" method="post">
-        <label for="username">username:</label><br>
-        <input type="text" name="username" id="username">
+        <label for="username">Name:</label><br>
+        <input type="text" name="name" id="name">
         <br><br>
 
-        <label for="useremail">useremail:</label><br>
-        <input type="text" name="useremail" id="useremail">
+        <label for="useremail">Email:</label><br>
+        <input type="text" name="email" id="email">
         <br><br>
 
-        <label for="passwd">password:</label><br>
+        <label for="useremail">Cellphone:</label><br>
+        <input type="text" name="cel" id="cel">
+        <br><br>
+
+        <label for="passwd">Password:</label><br>
         <input type="password" name="passwd" id="passwd">
         <br><br>
 
-        <label for="confpasswd">confirm password:</label><br>
+        <label for="confpasswd">Confirm password:</label><br>
         <input type="password" name="confpasswd" id="confpasswd">
         <br><br>
 

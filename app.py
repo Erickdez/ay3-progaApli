@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from logic.user_logic import UserLogic
+from logic.client_logic import ClientLogic
 import bcrypt
 
 app = Flask(__name__)
