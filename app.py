@@ -60,7 +60,8 @@ def login():
 @app.route("/logout")
 def logout():
     if session.get("loggedIn"):
-        session.pop("login_user")
+        session.pop("login_email")
+        session.pop("login_name")
         session.pop("loggedIn")
         return redirect("login")
     else:
